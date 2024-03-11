@@ -1,0 +1,177 @@
+/*
+
+Simple selectors selects elements based on their name, id and class
+
+static not applicable (top,bottom,left,right)
+relative: positions an element in relation to another element.
+fixed: arranges an element in a position in your view port. 
+absolute: positions an element with respect to the nearest relatively position element
+sticky: transitions between fixed and relative depending on the condition
+
+Use dot to position based on class, and hash based on id
+
+z-index: helps you to stack the elements in order of their importance, elements with higher zindex will always display on top of the others
+
+Display:
+-block
+-inline
+-flex | flex-wrap, gap, justify-content, flex-direction e.t.c
+grid
+table
+
+others-----
+
+CSS colors (rgb, hex, hsl, predefined css  colors)
+CSS borders
+CSS margin
+CSS padding
+CSS height/width
+
+CSS UNITS
+-Relative units - specifies a length relative to another length property. 
+    Relative length unit scale better between different redering mediums
+    em, ex, ch, rem, vw, vh, vmin, vmax, %
+-Absolute units - units are fixed and would appear exactly as it is sized
+    cm, mm, in (1in = 96px = 2.54cm), px(1px = 1/96in), pt(1pt = 1/72in), pc(1pc = 12pt)
+*/
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    font-family: Montserrat;
+}
+.hero-bg-img,.hero-bg-red{
+    position:absolute;
+    top:0;
+    left: 0;
+    width:100%;
+    height: 110vh;
+}
+.hero-bg-red{
+    width: fit-content;
+}
+
+#header{
+    text-align: center;
+}
+
+#intern{
+    display: flex;
+}
+#store{
+    display: flex;
+}
+.header-topic{
+    margin-bottom: -10px;
+}
+.intern-img{
+    margin-right: 20px;
+    margin-top: 20px;
+    width: 50%;
+}
+.store-img{
+    margin-right: 60px;
+    margin-left: 30px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    width: 40%;
+}
+.intern-content{
+    display: grid;
+}
+.store-content{
+    margin-top: 160px;
+    margin-right: 70px;
+}
+.intern-content p{
+    margin-top: 120px;
+}
+.intern-content button{
+    border-radius: 15px;
+    background-color: #6A1411;
+    border: none;
+    color: #FFFFFF;
+    width: fit-content;
+    height: fit-content;
+    padding: 20px 50px;
+}
+.store-content button{
+    border-radius: 15px;
+    background-color: #6A1411;
+    border: none;
+    color: #FFFFFF;
+    width: fit-content;
+    height: fit-content;
+    padding: 20px 50px;
+    margin-top: 50px;
+}
+#newpage{
+    background-color: #FFDCDC;
+}
+#hero{
+    height: 500px;
+}
+header{
+    position:relative;
+    z-index: 20;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px;
+}
+header ul{
+    display: flex;
+    height: fit-content;
+
+}
+header ul li{
+    display: flex;
+    padding: 0 10px;
+}
+header button{
+    height: 50px;
+    padding: 20px 35px;
+    border: none;
+    
+}
+.hero-content{
+    position:relative;
+    z-index: 10;
+}
+
+.hero-content{
+    color: white;
+}
+.hero-content h1,h3,p{
+    margin-bottom: 20px;
+    
+}
+.hero-content{
+    position: relative;
+    z-index: 10;
+    color:white;
+    padding-left: 50px;
+    margin-top: 100px;
+}
+header nav,header button,header img{
+    margin-top: auto;
+    margin-bottom: auto;
+    height: fit-content;
+}
+.white{
+    color: black;
+    background: white;
+}
+.button1{
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.2);
+    border: none;
+    color: #FFFFFF;
+    width: fit-content;
+    height: fit-content;
+    padding: 20px 50px;
+}
+button{
+    font-family: Montserrat, Helvetica, sans-serif;
+}
