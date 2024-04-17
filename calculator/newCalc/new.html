@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="new.css">
+</head>
+<body>
+    <div id="calculator">
+        <input id="display" readonly>
+        <div id="keys">
+            <button onclick="clearScreen()" class="more">AC</button>
+            <button onclick="appendText('%')" class="more">%</button>
+            <button onclick="appendText('^')" class="more">^</button>
+            <button onclick="appendText('/')" class="operator">/</button>
+
+            <button onclick="appendText('7')">7</button>
+            <button onclick="appendText('8')">8</button>
+            <button onclick="appendText('9')">9</button>
+            <button onclick="appendText('*') " class="operator">*</button>
+
+            <button onclick="appendText('4')">4</button>
+            <button onclick="appendText('5')">5</button>
+            <button onclick="appendText('6')">6</button>
+            <button onclick="appendText('-')" class="operator">-</button>
+
+            <button onclick="appendText('1')">1</button>
+            <button onclick="appendText('2')">2</button>
+            <button onclick="appendText('3')">3</button>
+            <button onclick="appendText('+')" class="operator">+</button>
+
+            <button onclick="appendText('0')" style="grid-column: 1/3; width: 180px;" >0</button>
+            <button onclick="appendText('.')">.</button>
+            <button onclick="calculate()" class="operator">=</button>
+
+
+        </div>
+
+    </div>
+    <script src="new.js"></script>
+    
+</body>
+</html>
