@@ -5,7 +5,7 @@ const id = url.searchParams.get('id')
 const productContainer = document.getElementById('new-product')
 
 //let category = data.category
-const productContainer1 = document.getElementById(`product-suggestions`) 
+const productContainer1 = document.getElementById(`product-suggestions`)
 
 async function getProducts() {
   console.log('Loading')
@@ -24,7 +24,7 @@ async function getProducts() {
 
 }
 
-async function getProducts1() {
+async function getSuggestions() {
   console.log('Loading')
   try {
     const response = await axios({
@@ -43,14 +43,48 @@ async function getProducts1() {
 
 
 async function displayProducts() {
-  const data = await getProducts()
+  const datas = [await getProducts()]
 
-  let images = ''
-  data.images.map((img, i) => {
-    images += `<img class="img1" src="${img}">`
-  })
+  datas.map((data, i) => {
+    let starRating = "";
 
-  productContainer.innerHTML += `
+    new Array(1, 2, 3, 4, 5).map((num, i) => {
+      console.log(Math.round(data.rating), num);
+      starRating +=
+        Math.round(data.rating) < num
+          ? `<svg
+      width="30"
+      height="28"
+      viewBox="0 0 30 28"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M15 0L18.3677 10.3647H29.2658L20.4491 16.7705L23.8168 27.1353L15 20.7295L6.18322 27.1353L9.55093 16.7705L0.734152 10.3647H11.6323L15 0Z"
+        fill="#D9D9D9"
+      />
+    </svg>`
+          : `<svg
+      width="30"
+      height="28"
+      viewBox="0 0 30 28"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M15 0L18.3677 10.3647H29.2658L20.4491 16.7705L23.8168 27.1353L15 20.7295L6.18322 27.1353L9.55093 16.7705L0.734152 10.3647H11.6323L15 0Z"
+        fill="#F5C64D"
+      />
+    </svg>`;
+    });
+
+    let images = ''
+    data.images.map((img, i) => {
+      images += `<img class="img1" src="${img}">`
+    })
+
+
+    productContainer.innerHTML += `
 
     <div class="product-img">
       <img class="thumbnail" src="${data.thumbnail}">
@@ -72,70 +106,7 @@ async function displayProducts() {
       <P class="stock">In stock: ${data.stock}</P>
       <div class="footer">
         <div class="rating">
-          <svg
-            width="30"
-            height="28"
-            viewBox="0 0 30 28"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15 0L18.3677 10.3647H29.2658L20.4491 16.7705L23.8168 27.1353L15 20.7295L6.18322 27.1353L9.55093 16.7705L0.734152 10.3647H11.6323L15 0Z"
-              fill="#F5C64D"
-            />
-          </svg>
-
-          <svg
-            width="30"
-            height="28"
-            viewBox="0 0 30 28"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15 0L18.3677 10.3647H29.2658L20.4491 16.7705L23.8168 27.1353L15 20.7295L6.18322 27.1353L9.55093 16.7705L0.734152 10.3647H11.6323L15 0Z"
-              fill="#F5C64D"
-            />
-          </svg>
-
-          <svg
-            width="30"
-            height="28"
-            viewBox="0 0 30 28"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15 0L18.3677 10.3647H29.2658L20.4491 16.7705L23.8168 27.1353L15 20.7295L6.18322 27.1353L9.55093 16.7705L0.734152 10.3647H11.6323L15 0Z"
-              fill="#F5C64D"
-            />
-          </svg>
-
-          <svg
-            width="30"
-            height="28"
-            viewBox="0 0 30 28"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15 0L18.3677 10.3647H29.2658L20.4491 16.7705L23.8168 27.1353L15 20.7295L6.18322 27.1353L9.55093 16.7705L0.734152 10.3647H11.6323L15 0Z"
-              fill="#F5C64D"
-            />
-          </svg>
-
-          <svg
-            width="30"
-            height="28"
-            viewBox="0 0 30 28"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M15 0L18.3677 10.3647H29.2658L20.4491 16.7705L23.8168 27.1353L15 20.7295L6.18322 27.1353L9.55093 16.7705L0.734152 10.3647H11.6323L15 0Z"
-              fill="#D9D9D9"
-            />
-          </svg>
+         ${starRating}
         </div>
         <p class="rating-text">${data.rating}</p>
       </div>
@@ -143,11 +114,12 @@ async function displayProducts() {
     </div>
       
       `
+  })
 
 }
 
-async function displayProducts1() {
-  const suggestions = await getProducts1()
+async function displaySuggestions() {
+  const suggestions = await getSuggestions()
 
   suggestions.map((suggestion, i) => {
     let starRating = "";
@@ -182,8 +154,8 @@ async function displayProducts1() {
     </svg>`;
     });
 
-  
-  productContainer1.innerHTML += `
+
+    productContainer1.innerHTML += `
   <div class="suggestions">
   <img class="suggested-img" src="${suggestion.thumbnail}" alt="img" />
   <h3 style="font-size: 12px;">${suggestion.title}</h3>
@@ -200,8 +172,8 @@ async function displayProducts1() {
 </div>
 
   `
-})
+  })
 }
 
 displayProducts()
-displayProducts1()
+displaySuggestions()
